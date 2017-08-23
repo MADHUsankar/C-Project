@@ -15,9 +15,9 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
 
 const routes: Routes = [
   // { path: "", component: ShoppageComponent },
-  // { path: "", component: UserComponent },//
-  { path: "", component: ListingsComponent },
-  // { path: "listings", component: ListingsComponent },
+  { path: "", component: UserComponent },//
+  //{ path: "", component: ListingsComponent },
+  { path: "listings", component: ListingsComponent },
    { path: "mylisting", component: MylistingComponent },
     { path: "shoppage", component: ShoppageComponent },
   { path: "product/:title", component: ShowprodComponent },

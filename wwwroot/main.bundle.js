@@ -20,13 +20,14 @@ webpackEmptyAsyncContext.id = "../../../../../client-src/$$_gendir lazy recursiv
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listings_listings_component__ = __webpack_require__("../../../../../client-src/app/listings/listings.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mylisting_mylisting_component__ = __webpack_require__("../../../../../client-src/app/mylisting/mylisting.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shoppage_shoppage_component__ = __webpack_require__("../../../../../client-src/app/shoppage/shoppage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__showprod_showprod_component__ = __webpack_require__("../../../../../client-src/app/showprod/showprod.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__cart_cart_component__ = __webpack_require__("../../../../../client-src/app/cart/cart.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__checkout_checkout_component__ = __webpack_require__("../../../../../client-src/app/checkout/checkout.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__order_confirmation_order_confirmation_component__ = __webpack_require__("../../../../../client-src/app/order-confirmation/order-confirmation.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_user_component__ = __webpack_require__("../../../../../client-src/app/user/user.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__listings_listings_component__ = __webpack_require__("../../../../../client-src/app/listings/listings.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mylisting_mylisting_component__ = __webpack_require__("../../../../../client-src/app/mylisting/mylisting.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shoppage_shoppage_component__ = __webpack_require__("../../../../../client-src/app/shoppage/shoppage.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__showprod_showprod_component__ = __webpack_require__("../../../../../client-src/app/showprod/showprod.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__cart_cart_component__ = __webpack_require__("../../../../../client-src/app/cart/cart.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__checkout_checkout_component__ = __webpack_require__("../../../../../client-src/app/checkout/checkout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__order_confirmation_order_confirmation_component__ = __webpack_require__("../../../../../client-src/app/order-confirmation/order-confirmation.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -42,17 +43,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
     // { path: "", component: ShoppageComponent },
-    // { path: "", component: UserComponent },//
-    { path: "", component: __WEBPACK_IMPORTED_MODULE_2__listings_listings_component__["a" /* ListingsComponent */] },
-    // { path: "listings", component: ListingsComponent },
-    { path: "mylisting", component: __WEBPACK_IMPORTED_MODULE_3__mylisting_mylisting_component__["a" /* MylistingComponent */] },
-    { path: "shoppage", component: __WEBPACK_IMPORTED_MODULE_4__shoppage_shoppage_component__["a" /* ShoppageComponent */] },
-    { path: "product/:title", component: __WEBPACK_IMPORTED_MODULE_5__showprod_showprod_component__["a" /* ShowprodComponent */] },
-    { path: 'cart', component: __WEBPACK_IMPORTED_MODULE_6__cart_cart_component__["a" /* CartComponent */] },
-    { path: 'checkout', component: __WEBPACK_IMPORTED_MODULE_7__checkout_checkout_component__["a" /* CheckoutComponent */] },
-    { path: 'confirmed', component: __WEBPACK_IMPORTED_MODULE_8__order_confirmation_order_confirmation_component__["a" /* OrderConfirmationComponent */] },
+    { path: "", component: __WEBPACK_IMPORTED_MODULE_2__user_user_component__["a" /* UserComponent */] },
+    //{ path: "", component: ListingsComponent },
+    { path: "listings", component: __WEBPACK_IMPORTED_MODULE_3__listings_listings_component__["a" /* ListingsComponent */] },
+    { path: "mylisting", component: __WEBPACK_IMPORTED_MODULE_4__mylisting_mylisting_component__["a" /* MylistingComponent */] },
+    { path: "shoppage", component: __WEBPACK_IMPORTED_MODULE_5__shoppage_shoppage_component__["a" /* ShoppageComponent */] },
+    { path: "product/:title", component: __WEBPACK_IMPORTED_MODULE_6__showprod_showprod_component__["a" /* ShowprodComponent */] },
+    { path: 'cart', component: __WEBPACK_IMPORTED_MODULE_7__cart_cart_component__["a" /* CartComponent */] },
+    { path: 'checkout', component: __WEBPACK_IMPORTED_MODULE_8__checkout_checkout_component__["a" /* CheckoutComponent */] },
+    { path: 'confirmed', component: __WEBPACK_IMPORTED_MODULE_9__order_confirmation_order_confirmation_component__["a" /* OrderConfirmationComponent */] },
     { path: "", pathMatch: "full", redirectTo: "/" },
 ];
 var AppRoutingModule = (function () {
@@ -1790,13 +1792,11 @@ UserComponent = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
 var User = (function () {
     function User() {
-        this.firstname = "";
-        this.lastname = "";
-        this.emailid = "";
-        this.password = "";
-        this.passwordconfirmation = "";
-        this.created_at = new Date();
-        this.updated_at = new Date();
+        this.FirstName = "";
+        this.LastName = "";
+        this.EmailAddress = "";
+        this.Password = "";
+        this.ConfirmPassword = "";
     }
     return User;
 }());

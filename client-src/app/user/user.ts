@@ -1,9 +1,8 @@
 export class User {
-    firstname: string = ""
-    lastname: string = ""
-    emailid: string = ""
-    password: string = ""
-    passwordconfirmation: string = ""
-    created_at: Date = new Date()
-    updated_at: Date = new Date()
+    FirstName: string = ""
+    LastName: string = ""
+    EmailAddress: string = ""
+    Password: string = ""
+    ConfirmPassword: string = ""
+   
 }
