@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/core";
 import {CartItem} from './../cart-item.model'
 import {DeliveryOption} from './../delivery-option.model'
-import {Bicycle} from "./../bicycle"
+import {ProductInfo} from "./../bicycle"
 import {ShoppingCart} from './../shoppingCart.model'
 import { DeliveryOptionsDataService } from "./../delivery-options.service";
 import { productService } from "./../product.service";
@@ -11,7 +11,7 @@ import { Subscription } from "rxjs/Subscription";
 import {Router} from "@angular/router" 
 
 interface ICartItemWithProduct extends CartItem {
-  product: Bicycle;
+  product: ProductInfo;
   totalCost: number;
 }
 
@@ -26,7 +26,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public cartItems: ICartItemWithProduct[];
   public itemCount: number;
 
-  private products: Bicycle[];
+  private products: ProductInfo[];
   private cartSubscription: Subscription;
 
   public constructor(private productsService: productService,
@@ -58,11 +58,11 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         this.products = products;
         this.cartItems = cart.items
                            .map((item) => {
-                              const product = this.products.find((p) => p.title === item.title);
+                              const product = this.products.find((p) => p.ProductName === item.title);
                               return {
                                 ...item,
                                 product,
-                                totalCost: product.price * item.quantity };
+                                totalCost: product.Price * item.quantity };
                            });
                               console.log("cartItems",this.cartItems)
       });

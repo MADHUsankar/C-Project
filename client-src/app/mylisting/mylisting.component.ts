@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router" 
  import {UserService} from "./../user.service"
-import {Bicycle} from "./../bicycle"
-import { User } from '.././user/user';
+import {ProductInfo} from "./../bicycle"
+import { Userrecord } from '.././user/user';
 @Component({
   selector: 'app-mylisting',
   templateUrl: './mylisting.component.html',
@@ -10,9 +10,9 @@ import { User } from '.././user/user';
 })
 export class MylistingComponent implements OnInit {
 // login_user = new User
-  newBike: Bicycle = new Bicycle();
+  newBike: ProductInfo = new ProductInfo();
   hasImage: boolean = false;
-  myBikes: Array<Bicycle>;
+  myBikes: Array<ProductInfo>;
   constructor(private user_service : UserService, private router:Router) { }
 
   ngOnInit() {

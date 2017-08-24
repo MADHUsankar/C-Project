@@ -242,23 +242,24 @@ AppModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Bicycle; });
-var Bicycle = (function () {
-    function Bicycle() {
-        this.title = '';
-        this.description = '';
-        this.price = null;
-        this.image = null;
-        this.location = '';
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ProductInfo; });
+var ProductInfo = (function () {
+    function ProductInfo() {
+        this.ProductName = '';
+        this.Description = '';
+        this.Price = null;
+        this.Imageurl = null;
+        // public CreatedAt: Date;
+        // public UpdatedAt: Date;
         this.user_id = '';
     }
-    Bicycle.prototype.updateFrom = function (src) {
-        this.title = src.title;
-        this.description = src.description;
-        this.price = src.price;
-        this.image = src.image;
+    ProductInfo.prototype.updateFrom = function (src) {
+        this.ProductName = src.ProductName;
+        this.Description = src.Description;
+        this.Price = src.Price;
+        this.Imageurl = src.Imageurl;
     };
-    return Bicycle;
+    return ProductInfo;
 }());
 
 //# sourceMappingURL=bicycle.js.map
@@ -382,8 +383,8 @@ var CartComponent = (function () {
                 _this.products = products;
                 _this.cartItems = cart.items
                     .map(function (item) {
-                    var product = _this.products.find(function (p) { return p.title === item.title; });
-                    return __assign({}, item, { product: product, totalCost: product.price * item.quantity });
+                    var product = _this.products.find(function (p) { return p.ProductName === item.title; });
+                    return __assign({}, item, { product: product, totalCost: product.Price * item.quantity });
                 });
                 console.log("cartItems", _this.cartItems);
             });
@@ -499,8 +500,8 @@ var CheckoutComponent = (function () {
                 _this.products = products;
                 _this.cartItems = cart.items
                     .map(function (item) {
-                    var product = _this.products.find(function (p) { return p.title === item.title; });
-                    return __assign({}, item, { product: product, totalCost: product.price * item.quantity });
+                    var product = _this.products.find(function (p) { return p.ProductName === item.title; });
+                    return __assign({}, item, { product: product, totalCost: product.Price * item.quantity });
                 });
                 console.log("cartItems", _this.cartItems);
             });
@@ -638,7 +639,7 @@ var FilterPipe = (function () {
         //   }
         searchStr = searchStr.toLowerCase();
         return bike_array.filter(function (bike) {
-            return bike.title.toLowerCase().includes(searchStr);
+            return bike.ProductName.toLowerCase().includes(searchStr);
         });
     };
     return FilterPipe;
@@ -705,7 +706,7 @@ var ListingsComponent = (function () {
     function ListingsComponent(user_service, router) {
         this.user_service = user_service;
         this.router = router;
-        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["a" /* Bicycle */]();
+        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["b" /* ProductInfo */]();
     }
     ListingsComponent.prototype.ngOnInit = function () {
         this.getAllBikes();
@@ -753,7 +754,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client-src/app/mylisting/mylisting.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <!-- <app-navigation></app-navigation> -->\n\n  \n    <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <!-- <meta charset=\"utf-8\"> -->\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> -->\n    <title>ecommerce App</title>\n    <!-- Bootstrap -->\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n       <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"> \n  </head>\n<body>\n \n<link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\">\n<div id=\"flipkart-navbar\">\n    <div class=\"container\">\n        <div class=\"row row1\">\n            <ul class=\"largenav pull-right\">\n                <li class=\"upper-links\"><a class=\"links\" href=\"/shoppage\">Continue Shopping</a></li>\n                <li class=\"upper-links\"><a class=\"links\" href=\"/logout\">Logout</a></li>\n                           \n            </ul>\n        </div>\n        <div class=\"row row2\">\n            <div class=\"col-sm-2\">\n                <h2 style=\"margin:0px;\"><span class=\"smallnav menu\">☰ Brand</span></h2>\n                <h1 style=\"margin:0px;\"><span class=\"largenav\">DojoMart</span></h1>\n            </div>\n            <div class=\"flipkart-navbar-search smallsearch col-sm-8 col-xs-11\">\n                <div class=\"row\">\n                    <input class=\"flipkart-navbar-input col-xs-11\" type=\"text\" placeholder=\"Search for Products, Brands and more\" name=\"searchStr\"   [(ngModel)]=\"searchStr\">\n                    <button class=\"flipkart-navbar-button col-xs-1\">\n                        <svg width=\"15px\" height=\"15px\">\n                            <path d=\"M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 \"></path>\n                        </svg>\n                    </button>\n                </div>\n            </div>\n            <div class=\"cart largenav col-sm-2\">\n                <a class=\"cart-button\" href=\"/cart\">\n                    <svg class=\"cart-svg \" width=\"16 \" height=\"16 \" viewBox=\"0 0 16 16 \">\n                        <path d=\"M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86 \" fill=\"#fff \"></path>\n                    </svg>  \n                    <span class=\"item-number \"></span>\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n <br>\n <br>\n <br>\n\n<!-- <div class=\"bikes\" > -->\n  \n\n<div class=\"create\">\n\n<h3>Manage Inventory</h3><br><br>\n  <div class=\"bike\">\n    <form (submit)=\"addBike(); bikeForm.reset()\" #bikeForm=\"ngForm\">\n      <div class=\"col-sm-3\">\n    <label>Image Upload (url): </label>\n     <input type=\"text\" name=\"image\" required [(ngModel)]='newBike.image' #image='ngModel'><br> \n      <!-- <img ng-src=\"http://cdn.mos.cms.futurecdn.net/05634a233decefea6571a8654a280ae0.jpg\" alt=\"click to add photo (required)\" > -->\n      </div><br>\n      <div class=\"col-sm-7\">\n        <div class=\"form-group\">\n          <label>Title</label> <span class=\"error\" *ngIf=\"title.errors && (title.dirty || title.touched)\"> *required</span>\n          <input type=\"text\" name=\"title\" class=\"form-control\" [(ngModel)]=\"newBike.title\" #title=\"ngModel\" required>\n          <label>Description</label> <span class=\"error\" *ngIf=\"description.errors && (description.dirty || description.touched)\">\n            <span *ngIf=\"description.errors.required\"> *required</span><span *ngIf=\"description.errors.maxlength\"> *cannot exceed 200 characters</span></span>\n          <textarea class=\"form-control\" rows=\"3\" name=\"desc\" [(ngModel)]=\"newBike.description\" #description=\"ngModel\" required maxlength=\"200\"></textarea>\n        </div>\n      </div>\n      <div class=\"col-sm-2\">\n        <div class=\"form-group\">\n          <label>Price</label> <span class=\"error\" *ngIf=\"price.errors && (price.dirty || price.touched)\">\n            <span *ngIf=\"price.errors.required\"> *required</span><span *ngIf=\"!price.errors.required && price.errors.minValue\">*at least $1</span></span>\n          <input type=\"number\" class=\"form-control\" name=\"price\" [(ngModel)]=\"newBike.price\" #price=\"ngModel\" required minValue=\"1\">\n          <label>Location</label> <span class=\"error\" *ngIf=\"location.errors && (location.dirty || location.touched)\"> *required</span>\n          <input type=\"text\" class=\"form-control\" name=\"location\" [(ngModel)]=\"newBike.location\" #location=\"ngModel\" required>\n          <br><input type=\"submit\" value=\"Create\" class=\"btn btn-success\" [disabled]=\"!bikeForm.form.valid \">\n        </div>\n      </div>\n    </form>\n    <hr>\n    <br>\n<br>\n<br>\n<br>\n<hr>\n  </div>\n</div>\n<hr>\n<hr>\n<br>\n<br>\n<br>\n<br>\n<div class=\"edits\">\n<!-- {{mybikes}} -->\n  <div class=\"bikes\" *ngFor=\"let b of myBikes; let idx = index\"><br>\n    <div class=\"col-sm-7\">\n    <img md-card-image src={{b.image}} style=\"width:100px;height:100px\">\n    </div>\n \n    <form (submit)=\"updateBike(idx)\" #bikeForm=\"ngForm\">\n \n      <div class=\"col-sm-7\">\n        <div class=\"form-group\">\n          <label>Title</label> \n           <span class=\"error\" *ngIf=\"title.errors && (title.dirty || title.touched)\"> *required</span> \n          <input type=\"text\" name=\"title\" class=\"form-control\" [(ngModel)]=\"b.title\" #title=\"ngModel\" required>\n          <label>Description</label> \n           <span class=\"error\" *ngIf=\"description.errors && (description.dirty || description.touched)\"> \n           <span *ngIf=\"description.errors.required\"> *required</span><span *ngIf=\"description.errors.maxlength\"> *cannot exceed 200 characters</span></span> \n          <textarea class=\"form-control\" rows=\"3\" name=\"desc\" [(ngModel)]=\"b.description\" #description=\"ngModel\" required maxlength=\"200\"></textarea>\n        </div>\n      </div>\n      <div class=\"col-sm-2\">\n        <div class=\"form-group\">\n          <label>Price</label>\n            <span class=\"error\" *ngIf=\"price.errors && (price.dirty || price.touched)\"> \n            <span *ngIf=\"price.errors.required\"> *required</span><span *ngIf=\"priceTooLow\">*at least $1</span></span> \n          <input type=\"number\" class=\"form-control\" name=\"price\" [(ngModel)]=\"b.price\" #price=\"ngModel\" required minValue=\"1\">\n          <label>Location</label> \n            <span class=\"error\" *ngIf=\"location.errors && (location.dirty || location.touched)\"> *required</span> \n          <input type=\"text\" class=\"form-control\" name=\"location\" [(ngModel)]=\"b.location\" #location=\"ngModel\" required>\n          <input type=\"submit\" value=\"Update\" class=\"btn btn-primary btn-half\" [disabled]=\"!bikeForm.form.valid \"> \n          <button class=\"btn btn-danger btn-half\" (click)=\"deleteBike(idx)\">Delete</button>\n          <hr>\n          <!-- <button type=\"button\"\n                        class=\"button success large js-btn-add\"\n                        (click)=\"addProductToCart(b, 1)\">Add To Cart</button>\n                <button type=\"button\"\n                        class=\"button small js-btn-remove\"\n                        *ngIf=\"productInCart(b) | async\"\n                        (click)=\"removeProductFromCart(b, 1)\">Remove item from cart</button> -->\n        </div>\n      </div>\n    </form>\n  </div>\n</div>\n      <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n    <!-- Include all compiled plugins (below), or include individual files as needed -->\n    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>\n    </body>"
+module.exports = "  <!-- <app-navigation></app-navigation> -->\n\n  \n    <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <!-- <meta charset=\"utf-8\"> -->\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> -->\n    <title>ecommerce App</title>\n    <!-- Bootstrap -->\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n       <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"> \n  </head>\n<body>\n \n<link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\">\n<div id=\"flipkart-navbar\">\n    <div class=\"container\">\n        <div class=\"row row1\">\n            <ul class=\"largenav pull-right\">\n                <li class=\"upper-links\"><a class=\"links\" href=\"/shoppage\">Continue Shopping</a></li>\n                <li class=\"upper-links\"><a class=\"links\" href=\"/logout\">Logout</a></li>\n                           \n            </ul>\n        </div>\n        <div class=\"row row2\">\n            <div class=\"col-sm-2\">\n                <h2 style=\"margin:0px;\"><span class=\"smallnav menu\">☰ Brand</span></h2>\n                <h1 style=\"margin:0px;\"><span class=\"largenav\">DojoMart</span></h1>\n            </div>\n            <div class=\"flipkart-navbar-search smallsearch col-sm-8 col-xs-11\">\n                <div class=\"row\">\n                    <input class=\"flipkart-navbar-input col-xs-11\" type=\"text\" placeholder=\"Search for Products, Brands and more\" name=\"searchStr\"   [(ngModel)]=\"searchStr\">\n                    <button class=\"flipkart-navbar-button col-xs-1\">\n                        <svg width=\"15px\" height=\"15px\">\n                            <path d=\"M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 \"></path>\n                        </svg>\n                    </button>\n                </div>\n            </div>\n            <div class=\"cart largenav col-sm-2\">\n                <a class=\"cart-button\" href=\"/cart\">\n                    <svg class=\"cart-svg \" width=\"16 \" height=\"16 \" viewBox=\"0 0 16 16 \">\n                        <path d=\"M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86 \" fill=\"#fff \"></path>\n                    </svg>  \n                    <span class=\"item-number \"></span>\n                </a>\n            </div>\n        </div>\n    </div>\n</div>\n <br>\n <br>\n <br>\n\n<!-- <div class=\"bikes\" > -->\n  \n\n<div class=\"create\">\n\n<h3>Manage Inventory</h3><br><br>\n  <div class=\"bike\">\n    <form (submit)=\"addBike(); bikeForm.reset()\" #bikeForm=\"ngForm\">\n      <div class=\"col-sm-3\">\n    <label>Image Upload (url): </label>\n     <input type=\"text\" name=\"Imageurl\" required [(ngModel)]='newBike.Imageurl' #Imageurl='ngModel'><br> \n      <!-- <img ng-src=\"http://cdn.mos.cms.futurecdn.net/05634a233decefea6571a8654a280ae0.jpg\" alt=\"click to add photo (required)\" > -->\n      </div><br>\n      <div class=\"col-sm-7\">\n        <div class=\"form-group\">\n          <label>Title</label> <span class=\"error\" *ngIf=\"ProductName.errors && (ProductName.dirty || ProductName.touched)\"> *required</span>\n          <input type=\"text\" name=\"ProductName\" class=\"form-control\" [(ngModel)]=\"newBike.ProductName\" #ProductName=\"ngModel\" required>\n          <label>Description</label> <span class=\"error\" *ngIf=\"Description.errors && (Description.dirty || Description.touched)\">\n            <span *ngIf=\"Description.errors.required\"> *required</span><span *ngIf=\"Description.errors.maxlength\"> *cannot exceed 200 characters</span></span>\n          <textarea class=\"form-control\" rows=\"3\" name=\"desc\" [(ngModel)]=\"newBike.Description\" #Description=\"ngModel\" required maxlength=\"200\"></textarea>\n        </div>\n      </div>\n      <div class=\"col-sm-2\">\n        <div class=\"form-group\">\n          <label>Price</label> <span class=\"error\" *ngIf=\"Price.errors && (Price.dirty || Price.touched)\">\n            <span *ngIf=\"Price.errors.required\"> *required</span><span *ngIf=\"!Price.errors.required && Price.errors.minValue\">*at least $1</span></span>\n          <input type=\"number\" class=\"form-control\" name=\"Price\" [(ngModel)]=\"newBike.price\" #Price=\"ngModel\" required minValue=\"1\">\n         \n          <br><input type=\"submit\" value=\"Create\" class=\"btn btn-success\" [disabled]=\"!bikeForm.form.valid \">\n        </div>\n      </div>\n    </form>\n    <hr>\n    <br>\n<br>\n<br>\n<br>\n<hr>\n  </div>\n</div>\n<hr>\n<hr>\n<br>\n<br>\n<br>\n<br>\n<div class=\"edits\">\n<!-- {{mybikes}} -->\n  <div class=\"bikes\" *ngFor=\"let b of myBikes; let idx = index\"><br>\n    <div class=\"col-sm-7\">\n    <img md-card-image src={{b.Imageurl}} style=\"width:100px;height:100px\">\n    {{b.ProductName}}\n    {{b.Description}}\n    {{b.Price}}\n    </div>\n  </div>\n</div>\n      <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n    <!-- Include all compiled plugins (below), or include individual files as needed -->\n    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>\n    </body>"
 
 /***/ }),
 
@@ -784,7 +785,7 @@ var MylistingComponent = (function () {
         this.user_service = user_service;
         this.router = router;
         // login_user = new User
-        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["a" /* Bicycle */]();
+        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["b" /* ProductInfo */]();
         this.hasImage = false;
     }
     MylistingComponent.prototype.ngOnInit = function () {
@@ -1007,7 +1008,7 @@ var productService = (function (_super) {
             .get("/getAllBikes")
             .map(function (response) { return response.json()
             .map(function (item) {
-            var model = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["a" /* Bicycle */]();
+            var model = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["b" /* ProductInfo */]();
             model.updateFrom(item);
             return model;
         }); }); });
@@ -1078,7 +1079,7 @@ var ShoppageComponent = (function () {
         this.user_service = user_service;
         this.router = router;
         this.shoppingCartService = shoppingCartService;
-        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["a" /* Bicycle */]();
+        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["b" /* ProductInfo */]();
         this.searchStr = '';
     }
     //  private cartSubscription: Subscription;
@@ -1099,7 +1100,7 @@ var ShoppageComponent = (function () {
             .catch(function (err) { console.log(err); });
     };
     ShoppageComponent.prototype.chooseProduct = function (bicyle) {
-        this.router.navigate(['/product', bicyle.title]);
+        this.router.navigate(['/product', bicyle.ProductName]);
     };
     return ShoppageComponent;
 }());
@@ -1215,11 +1216,11 @@ var ShoppingCartService = (function () {
     };
     ShoppingCartService.prototype.addItem = function (product, quantity) {
         var cart = this.retrieve();
-        var item = cart.items.find(function (p) { return p.title === product.title; });
+        var item = cart.items.find(function (p) { return p.title === product.ProductName; });
         if (item === undefined) {
             item = new __WEBPACK_IMPORTED_MODULE_5__cart_item_model__["a" /* CartItem */]();
-            item.title = product.title;
-            item.img = product.image;
+            item.title = product.ProductName;
+            item.img = product.Imageurl;
             cart.items.push(item);
         }
         item.quantity += quantity;
@@ -1241,7 +1242,7 @@ var ShoppingCartService = (function () {
     ShoppingCartService.prototype.calculateCart = function (cart) {
         var _this = this;
         cart.itemsTotal = cart.items
-            .map(function (item) { return item.quantity * _this.products.find(function (p) { return p.title === item.title; }).price; })
+            .map(function (item) { return item.quantity * _this.products.find(function (p) { return p.ProductName === item.title; }).Price; })
             .reduce(function (previous, current) { return previous + current; }, 0);
         cart.deliveryTotal = cart.deliveryOptionId ?
             this.deliveryOptions.find(function (x) { return x.id === cart.deliveryOptionId; }).price :
@@ -1333,9 +1334,9 @@ var ShowprodComponent = (function () {
         this.user_service = user_service;
         this.router = router;
         this.shoppingCartService = shoppingCartService;
-        this.newBike = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["a" /* Bicycle */]();
+        this.newBike = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["Bicycle"]();
         this.product_title = " ";
-        this.product = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["a" /* Bicycle */];
+        this.product = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["Bicycle"];
         this._route.params.subscribe(function (param) {
             _this.product_title = param.title;
         });
@@ -1582,7 +1583,7 @@ var UserLoginComponent = (function () {
     function UserLoginComponent(user_service, router) {
         this.user_service = user_service;
         this.router = router;
-        this.login_user = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */];
+        this.login_user = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* Userrecord */];
         this.login_error = { status: false, message: {} };
     }
     UserLoginComponent.prototype.ngOnInit = function () {
@@ -1593,15 +1594,16 @@ var UserLoginComponent = (function () {
         this.user_service.login(this.login_user)
             .then(function () {
             console.log("login success in componnent");
-            _this.user_service.checkadmin()
-                .then(function () {
-                console.log("admin ts.....");
-                _this.router.navigate(['mylisting']);
-            })
-                .catch(function (err) {
-                console.log("non-admin ts", err);
-                _this.router.navigate(['shoppage']);
-            });
+            // this.user_service.checkadmin() 
+            //                   .then(()=>{
+            //                           console.log("admin ts.....")
+            //                           this.router.navigate(['mylisting'])
+            //                   } )
+            //                   .catch(err => {
+            //                     console.log("non-admin ts", err)
+            //                       this.router.navigate(['shoppage'])
+            //               })
+            _this.router.navigate(['mylisting']);
         })
             .catch(function (err) { console.log("login fail component", err); _this.login_error.status = true; _this.login_error.message = err; });
         //   login(){
@@ -1664,7 +1666,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../client-src/app/user/user-register/user-register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <!-- <meta charset=\"utf-8\"> -->\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> -->\n    <title>Bicycle App</title>\n    <!-- Bootstrap -->\n      <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n  </head>\n<body>\n<form (submit)=\"registration()\" #formData='ngForm'>\n  <p>\n    Email ID:<input \n    type=\"text\" \n    name=\"EmailAddress\" \n    required \n    minlength=\"4\" \n    maxlength=\"24\"\n    required pattern=\"^([A-Za-z0-9._\\-]+)@([a-zA-Z0-9._\\-]+)\\.([a-zA-Z]+)$\" \n    [(ngModel)]=\"reg_user.EmailAddress\"\n    #EmailAddress='ngModel'\n  />\n  </p>\n <span style=\"color: red;\" *ngIf=\"EmailAddress.errors && EmailAddress.touched\">Email id should atleast be 4 characters long</span> <br>\n<p>\n  First Name:<input \n    type=\"text\" \n    name=\"FirstName\" \n    required \n    minlength=\"4\" \n    maxlength=\"24\"\n    [(ngModel)]=\"reg_user.FirstName\"\n    #FirstName='ngModel'\n  />\n    </p>\n<span style=\"color: red;\" *ngIf=\"FirstName.errors && FirstName.touched\">First Name should atleast be 4 characters long</span> <br>\n  <p>\n    Last Name:\n  <input \n    type=\"text\" \n    name=\"LastName\" \n    required \n    minlength=\"4\" \n    maxlength=\"24\"\n    [(ngModel)]=\"reg_user.LastName\"\n    #LastName='ngModel'\n  />\n    </p>\n<span style=\"color: red;\" *ngIf=\"LastName.errors && LastName.touched\">Last Name  should atleast be 4 characters long</span> <br>\n  <p> Password\n  <input \n    type=\"password\" \n    name=\"Password\" \n    required \n    minlength=\"10\" \n    maxlength=\"24\"\n    pattern=\"^([a-zA-Z0-9@*#]{8,15})$\"\n    [(ngModel)]=\"reg_user.Password\"\n    #Password='ngModel'\n  />\n    </p>\n<span style=\"color: red;\" *ngIf=\"Password.errors && Password.touched\">Password  should atleast be 4 characters long</span> <br>\n    <p> Password Confirmation\n  <input \n    type=\"password\" \n    name=\"ConfirmPassword\" \n    required \n    minlength=\"10\" \n    maxlength=\"24\"\n    validateEqual=\"Password\"\n    pattern=\"^([a-zA-Z0-9@*#]{8,15})$\"\n    [(ngModel)]=\"reg_user.ConfirmPassword\"\n    #passwordconfirmation='ngModel'\n  />\n <span style=\"color: red;\" *ngIf=\"ConfirmPassword.errors && Password.touched && ConfirmPassword.dirty \">Password does not match</span> <br>\n \n <button type=\"submit\" [disabled]=\"!formData.valid\">Register</button>\n</form>\n  \n\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n    <!-- Include all compiled plugins (below), or include individual files as needed -->\n    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>\n    "
+module.exports = "  <!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <!-- <meta charset=\"utf-8\"> -->\n    <!-- <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> -->\n    <title>Bicycle App</title>\n    <!-- Bootstrap -->\n      <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n  </head>\n<body>\n<form (submit)=\"registration()\" #formData='ngForm'>\n  <p>\n    Email ID:<input \n    type=\"text\" \n    name=\"EmailAddress\" \n    required \n    minlength=\"4\" \n    maxlength=\"24\"\n    required pattern=\"^([A-Za-z0-9._\\-]+)@([a-zA-Z0-9._\\-]+)\\.([a-zA-Z]+)$\" \n    [(ngModel)]=\"reg_user.EmailAddress\"\n    #EmailAddress='ngModel'\n  />\n  </p>\n <span style=\"color: red;\" *ngIf=\"EmailAddress.errors && EmailAddress.touched\">Email id should atleast be 4 characters long</span> <br>\n<p>\n  First Name:<input \n    type=\"text\" \n    name=\"FirstName\" \n    required \n    minlength=\"4\" \n    maxlength=\"24\"\n    [(ngModel)]=\"reg_user.FirstName\"\n    #FirstName='ngModel'\n  />\n    </p>\n<span style=\"color: red;\" *ngIf=\"FirstName.errors && FirstName.touched\">First Name should atleast be 4 characters long</span> <br>\n  <p>\n    Last Name:\n  <input \n    type=\"text\" \n    name=\"LastName\" \n    required \n    minlength=\"4\" \n    maxlength=\"24\"\n    [(ngModel)]=\"reg_user.LastName\"\n    #LastName='ngModel'\n  />\n    </p>\n<span style=\"color: red;\" *ngIf=\"LastName.errors && LastName.touched\">Last Name  should atleast be 4 characters long</span> <br>\n  <p> Password\n  <input \n    type=\"password\" \n    name=\"Password\" \n    required \n    minlength=\"10\" \n    maxlength=\"24\"\n    pattern=\"^([a-zA-Z0-9@*#]{8,15})$\"\n    [(ngModel)]=\"reg_user.Password\"\n    #Password='ngModel'\n  />\n    </p>\n<span style=\"color: red;\" *ngIf=\"Password.errors && Password.touched\">Password  should atleast be 4 characters long</span> <br>\n   \n \n <button type=\"submit\" [disabled]=\"!formData.valid\">Register</button>\n</form>\n  \n\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n    <!-- Include all compiled plugins (below), or include individual files as needed -->\n    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>\n    "
 
 /***/ }),
 
@@ -1694,7 +1696,7 @@ var UserRegisterComponent = (function () {
     function UserRegisterComponent(user_service, router) {
         this.user_service = user_service;
         this.router = router;
-        this.reg_user = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */];
+        this.reg_user = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* Userrecord */];
     }
     UserRegisterComponent.prototype.ngOnInit = function () {
     };
@@ -1706,7 +1708,7 @@ var UserRegisterComponent = (function () {
             _this.router.navigate(['/shoppage']);
         })
             .catch(function (err) { return console.log(err); });
-        this.reg_user = new __WEBPACK_IMPORTED_MODULE_2__user__["a" /* User */];
+        // this.reg_user = new Userrecord
     };
     return UserRegisterComponent;
 }());
@@ -1789,16 +1791,16 @@ UserComponent = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
-var User = (function () {
-    function User() {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Userrecord; });
+var Userrecord = (function () {
+    function Userrecord() {
         this.FirstName = "";
         this.LastName = "";
         this.EmailAddress = "";
         this.Password = "";
         this.ConfirmPassword = "";
     }
-    return User;
+    return Userrecord;
 }());
 
 //# sourceMappingURL=user.js.map

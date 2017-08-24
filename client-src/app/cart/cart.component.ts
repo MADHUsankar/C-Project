@@ -3,8 +3,8 @@ import { Router, ActivatedRoute} from "@angular/router"
  import {UserService} from "./../user.service"
  import { ChangeDetectionStrategy, Component, OnDestroy, OnInit,Input } from "@angular/core";
  import {ShoppingCartService} from "./../shoppingcart.service"
-import {Bicycle} from "./../bicycle"
-import { User } from '.././user/user';
+import {ProductInfo} from "./../bicycle"
+import { Userrecord } from '.././user/user';
 import { Observable } from "rxjs/Observable";
 import {CartItem} from './../cart-item.model'
 // import {ShoppingCartService} from "./../shoppingcart.service"
@@ -14,7 +14,7 @@ import { Observer } from "rxjs/Observer";
 import { productService } from "./../product.service";
 
 interface ICartItemWithProduct extends CartItem {
-  product: Bicycle;
+  product: ProductInfo;
   totalCost: number;
 }
 @Component({
@@ -29,7 +29,7 @@ export class CartComponent implements OnInit {
   public itemCount: number;
 public title: string[];
   private cartSubscription: Subscription;
-   private products: Bicycle[];
+   private products: ProductInfo[];
    public cartItems: ICartItemWithProduct[];
  @Input() cartonly: boolean;
   public constructor(private shoppingCartService: ShoppingCartService,private productsService: productService,) {
@@ -50,11 +50,11 @@ public title: string[];
         this.products = products;
         this.cartItems = cart.items
                            .map((item) => {
-                              const product = this.products.find((p) => p.title === item.title);
+                              const product = this.products.find((p) => p.ProductName === item.title);
                               return {
                                 ...item,
                                 product,
-                                totalCost: product.price * item.quantity };
+                                totalCost: product.Price * item.quantity };
                            });
                               console.log("cartItems",this.cartItems)
       });

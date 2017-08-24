@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "./../../user.service"
-import {User} from "./../user"
+import {Userrecord} from "./../user"
 import {Router} from "@angular/router" 
 @Component({
   selector: 'app-user-register',
@@ -8,7 +8,7 @@ import {Router} from "@angular/router"
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
-  reg_user = new User
+  reg_user = new Userrecord
   constructor(private user_service : UserService, private router:Router) { }
   
   ngOnInit() {
@@ -21,7 +21,8 @@ export class UserRegisterComponent implements OnInit {
       this.router.navigate(['/shoppage'])
     })
     .catch(err => console.log(err))
-    this.reg_user = new User
+    
+    // this.reg_user = new Userrecord
   }
 
 }

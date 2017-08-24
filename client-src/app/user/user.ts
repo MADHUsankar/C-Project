@@ -1,4 +1,4 @@
-export class User {
+export class Userrecord {
     FirstName: string = ""
     LastName: string = ""
     EmailAddress: string = ""

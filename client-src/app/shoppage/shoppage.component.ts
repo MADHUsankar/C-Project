@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router" 
  import {UserService} from "./../user.service"
-import {Bicycle} from "./../bicycle"
-import { User } from '.././user/user';
+import {ProductInfo} from "./../bicycle"
+import { Userrecord } from '.././user/user';
 import { Observable } from "rxjs/Observable";
 import {ShoppingCartService} from "./../shoppingcart.service"
 import { ShoppingCart } from "./../shoppingCart.model";
@@ -16,9 +16,9 @@ import { Observer } from "rxjs/Observer";
   styleUrls: ['./shoppage.component.css']
 })
 export class ShoppageComponent implements OnInit  {
-  newBike: Bicycle = new Bicycle();
+  newBike: ProductInfo = new ProductInfo();
   searchStr = ''
-  allBikes: Array<Bicycle>;
+  allBikes: Array<ProductInfo>;
    public cart: Observable<ShoppingCart>;
 private cartSubscription: Subscription;
   public itemCount: number;
@@ -41,8 +41,8 @@ private cartSubscription: Subscription;
     .catch((err) => { console.log(err); });
   }
 
-  chooseProduct(bicyle: Bicycle){
-    this.router.navigate(['/product', bicyle.title]);
+  chooseProduct(bicyle: ProductInfo){
+    this.router.navigate(['/product', bicyle.ProductName]);
   }
 
 }

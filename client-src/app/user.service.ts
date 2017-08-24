@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http"
-import {User} from "./user/user"
-import {Bicycle} from "./bicycle"
+import {Userrecord} from "./user/user"
+import {ProductInfo} from "./bicycle"
 import "rxjs"
 @Injectable()
 export class UserService {
 
   constructor(private http: Http) { }
- registration (user:User){
+ registration (user:Userrecord){
    return this.http.post("/register",user)
       .map(data => data.json())
       .toPromise()
  }
 
-  login (user:User){
+  login (user:Userrecord){
    return this.http.post("/login",user)
       .map(data => data.json())
       .toPromise()
  }
-   addBike (bike){
+   addBike (bike:ProductInfo){
    return this.http.post("/addbike",bike)
       .map(data => data.json())
       .toPromise()

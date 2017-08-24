@@ -4,7 +4,7 @@ import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
 import { DeliveryOption } from "./delivery-option.model";
 import { CachcingServiceBase } from "./caching.service";
-import {Bicycle} from "./bicycle"
+import {ProductInfo} from "./bicycle"
 
 @Injectable()
 export class DeliveryOptionsDataService extends CachcingServiceBase {

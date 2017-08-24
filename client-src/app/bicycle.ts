@@ -1,19 +1,20 @@
-import { User } from "././user/user";
+import { Userrecord } from "././user/user";
 
-export class Bicycle {
-    public title: string = '';
-    public description: string = '';
-    public price: number = null;
-    public image: string = null;
-    public location: string = '';
+export class ProductInfo {
+    public ProductName: string = '';
+    public Description: string = '';
+    public Price: number = null;
+    public Imageurl: string = null;
+    // public CreatedAt: Date;
+    // public UpdatedAt: Date;
     public user_id: string = '';
      
-  public updateFrom(src: Bicycle): void {
-    this.title = src.title;
+  public updateFrom(src: ProductInfo): void {
+    this.ProductName = src.ProductName;
      
-    this.description = src.description;
-    this.price = src.price;
-     this.image=src.image
+    this.Description = src.Description;
+    this.Price = src.Price;
+     this.Imageurl=src.Imageurl;
     
   }
 }

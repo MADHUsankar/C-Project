@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Bicycle } from "./bicycle";
+import { ProductInfo } from "./bicycle";
 
 @Pipe({
   name: 'filter',
@@ -7,7 +7,7 @@ import { Bicycle } from "./bicycle";
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(bike_array: Array<Bicycle>, searchStr: string): Array<Bicycle> {
+  transform(bike_array: Array<ProductInfo>, searchStr: string): Array<ProductInfo> {
     // if((searchStr=null))
     //   {
     //     searchStr = ""
@@ -18,7 +18,7 @@ export class FilterPipe implements PipeTransform {
 
       searchStr=searchStr.toLowerCase();
     return bike_array.filter(bike => {
-      return bike.title.toLowerCase().includes(searchStr) 
+      return bike.ProductName.toLowerCase().includes(searchStr) 
     })
   }
 

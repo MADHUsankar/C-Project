@@ -61,19 +61,7 @@
   />
     </p>
 <span style="color: red;" *ngIf="Password.errors && Password.touched">Password  should atleast be 4 characters long</span> <br>
-    <p> Password Confirmation
-  <input 
-    type="password" 
-    name="ConfirmPassword" 
-    required 
-    minlength="10" 
-    maxlength="24"
-    validateEqual="Password"
-    pattern="^([a-zA-Z0-9@*#]{8,15})$"
-    [(ngModel)]="reg_user.ConfirmPassword"
-    #passwordconfirmation='ngModel'
-  />
- <span style="color: red;" *ngIf="ConfirmPassword.errors && Password.touched && ConfirmPassword.dirty ">Password does not match</span> <br>
+   
  
  <button type="submit" [disabled]="!formData.valid">Register</button>
 </form>

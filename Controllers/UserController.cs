@@ -24,13 +24,17 @@ namespace ecommerce.Controllers
 
 [HttpPost]
 [Route("register")]
-public IActionResult register(RegisterViewModel user)
+public IActionResult register([FromBody] Userrecord user)
 {
-   
-           
-        //List<Userrecord> existinguser = _context.user.Where(u=>u.EmailAddress==user.EmailAddress).ToList();
-        // if (existinguser.Count == 0)
-        // {
+System.Console.WriteLine(user.FirstName);
+System.Console.WriteLine("In RegController");
+      if(ModelState.IsValid)
+     {
+           System.Console.WriteLine("In Regmodelvalid");
+        List<Userrecord> existinguser = _context.user.Where(u=>u.EmailAddress==user.EmailAddress).ToList();
+         System.Console.WriteLine("In Regmodelvalid");
+        if (existinguser.Count == 0)
+        {
              Userrecord newUser = new Userrecord {FirstName = user.FirstName, LastName= user.LastName, EmailAddress = user.EmailAddress, };
             //  newUser.Password = Hasher.HashPassword(newUser, user.Password);
             newUser.Password =  user.Password;
@@ -40,42 +44,46 @@ public IActionResult register(RegisterViewModel user)
             HttpContext.Session.SetInt32("uid", logUser.UserId);
             System.Console.WriteLine("here");
             return Json(true);
-       // }
-        // else
-        // {
-        //     ViewBag.status="regfailspecific";
-        //     ViewBag.regerror = "User already exists";
-        //     return View("Register");
-        // }
+        }
+        else
+        {
+             System.Console.WriteLine("In firstelse");
+            ViewBag.status="regfailspecific";
+            ViewBag.regerror = "User already exists";
+            return Json(false);
+        }
 
-    
-    // else{
-    //     ViewBag.errors = ModelState.Values;
-    //     ViewBag.status="regfail";
-    //     return View("Register");
+    }
+    else{
+         System.Console.WriteLine("In secondelse");
+        ViewBag.errors = ModelState.Values;
+        ViewBag.status="regfail";
+        return Json(false);
 
-    // }
+    }
+    // return Json(true);
 }
-
 [HttpPost]
 [Route("login")]
-public IActionResult login(string EmailAddress,string Password)
+public IActionResult login([FromBody] Userrecord user)
 {
-    Userrecord existingloginuser = _context.user.SingleOrDefault(user => user.EmailAddress == EmailAddress);
+    System.Console.WriteLine(user.EmailAddress);
+    Userrecord existingloginuser = _context.user.SingleOrDefault(u => u.EmailAddress == user.EmailAddress);
          
 if (existingloginuser == null)
             {
+                System.Console.WriteLine("come here");
                 ViewBag.status="loginfailspecific";
                 ViewBag.loginerror = "Please register!";
                 return Json(false);
             }   
     else    
         {
-            if(Password != null)
+            if(user.Password != null)
             {
             // var Hasher = new PasswordHasher<User>();
             // if(0 != Hasher.VerifyHashedPassword(existingloginuser, existingloginuser.Password, Password)){
-            if(existingloginuser.Password==Password){
+            if(existingloginuser.Password==user.Password){
                 HttpContext.Session.SetInt32("uid",(int)existingloginuser.UserId);
                 HttpContext.Session.SetString("username", (string)existingloginuser.FirstName);
                 return Json(true);

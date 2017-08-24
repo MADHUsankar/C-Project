@@ -4,24 +4,24 @@ import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
 import { DeliveryOption } from "./delivery-option.model";
 import { CachcingServiceBase } from "./caching.service";
-import {Bicycle} from "./bicycle"
+import {ProductInfo} from "./bicycle"
 
 @Injectable()
 export class productService extends CachcingServiceBase {
-  private products: Observable<Bicycle[]>;
+  private products: Observable<ProductInfo[]>;
 
   public constructor(private http: Http) {
     super();
   }
 
-  public all(): Observable<Bicycle[]> {  
-    return this.cache<Bicycle[]>(() => this.products,
-                                        (val: Observable<Bicycle[]>) => this.products = val,
+  public all(): Observable<ProductInfo[]> {  
+    return this.cache<ProductInfo[]>(() => this.products,
+                                        (val: Observable<ProductInfo[]>) => this.products = val,
                                         () => this.http
                                                   .get("/getAllBikes")
                                                   .map((response) => response.json()
                                                                              .map((item) => {
-                                                                                let model = new Bicycle();
+                                                                                let model = new ProductInfo();
                                                                                 model.updateFrom(item);
                                                                                 return model;
                                                                               })));

@@ -16,17 +16,17 @@ namespace ecommerce.Models
         [Required]
         public string Imageurl {get; set;}
         [Required]
-        public int InitialQty {get; set;}
-       public DateTime CreatedAt {get;set;}
-       public DateTime UpdatedAt {get;set;}
-          public List<Orderinfo> Orderinfo {get;set;}
+        
+        public double Price {get;set;}
+    //    public DateTime CreatedAt {get;set;}
+    //    public DateTime UpdatedAt {get;set;}
+        //   public List<Orderinfo> Orderinfo {get;set;}
 
-        public ProductInfo(){
-            Orderinfo = new List<Orderinfo>();
-            CreatedAt= DateTime.Now;
-            UpdatedAt=DateTime.Now;
+        // public ProductInfo(){
+        //     Orderinfo = new List<Orderinfo>();
+        //     // CreatedAt= DateTime.Now;
+        //     // UpdatedAt=DateTime.Now;
         }
        
 
     }
-}

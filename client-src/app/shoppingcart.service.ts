@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http"
-import {User} from "./user/user"
-import {Bicycle} from "./bicycle"
+import {Userrecord} from "./user/user"
+import {ProductInfo} from "./bicycle"
 import { Observable } from "rxjs/Observable";
 import { Observer } from "rxjs/Observer";
 import "rxjs"
@@ -19,7 +19,7 @@ export class ShoppingCartService {
      private storage: Storage;
      private subscriptionObservable: Observable<ShoppingCart>;
      private subscribers: Array<Observer<ShoppingCart>> = new Array<Observer<ShoppingCart>>();
-  private products: Bicycle[];
+  private products: ProductInfo[];
   private deliveryOptions: DeliveryOption[];
 
   public  constructor(private storageService: StorageService,private productservice:productService,
@@ -58,13 +58,13 @@ export class ShoppingCartService {
   }
 
  
-   public addItem(product: Bicycle, quantity: number): void {
+   public addItem(product: ProductInfo, quantity: number): void {
     const cart = this.retrieve();
-    let item = cart.items.find((p) => p.title === product.title);
+    let item = cart.items.find((p) => p.title === product.ProductName);
     if (item === undefined) {
       item = new CartItem();
-      item.title = product.title;
-      item.img = product.image;
+      item.title = product.ProductName;
+      item.img = product.Imageurl;
       cart.items.push(item);
     }
 
@@ -88,7 +88,7 @@ export class ShoppingCartService {
 
  private calculateCart(cart: ShoppingCart): void {
     cart.itemsTotal = cart.items
-                          .map((item) => item.quantity * this.products.find((p) => p.title === item.title).price)
+                          .map((item) => item.quantity * this.products.find((p) => p.ProductName === item.title).Price)
                           .reduce((previous, current) => previous + current, 0);
      cart.deliveryTotal = cart.deliveryOptionId ?
                           this.deliveryOptions.find((x) => x.id === cart.deliveryOptionId).price :

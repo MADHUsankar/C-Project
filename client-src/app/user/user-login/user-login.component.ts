@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "./../../user.service"
-import {User} from "./../user"
+import {Userrecord} from "./../user"
 import {Router} from "@angular/router" 
 
 @Component({
@@ -10,8 +10,8 @@ import {Router} from "@angular/router"
 })
 export class UserLoginComponent implements OnInit {
 
-login_user = new User
-current_user:User
+login_user = new Userrecord
+current_user:Userrecord
  
 login_error = {status:false, message:{}};
   constructor(private user_service : UserService, private router:Router) { }
@@ -23,16 +23,17 @@ login_error = {status:false, message:{}};
     this.user_service.login(this.login_user)
     .then(() => {
       console.log("login success in componnent"); 
-              this.user_service.checkadmin() 
-                                .then(()=>{
+              // this.user_service.checkadmin() 
+              //                   .then(()=>{
                                 
-                                        console.log("admin ts.....")
-                                        this.router.navigate(['mylisting'])
-                                } )
-                                .catch(err => {
-                                  console.log("non-admin ts", err)
-                                    this.router.navigate(['shoppage'])
-                            })
+              //                           console.log("admin ts.....")
+              //                           this.router.navigate(['mylisting'])
+              //                   } )
+              //                   .catch(err => {
+              //                     console.log("non-admin ts", err)
+              //                       this.router.navigate(['shoppage'])
+              //               })
+              this.router.navigate(['mylisting'])
     })
     .catch(err => {console.log("login fail component", err); this.login_error.status = true; this.login_error.message=err})
   //   login(){

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http"
-import {User} from "./user/user"
-import {Bicycle} from "./bicycle"
+import {Userrecord} from "./user/user"
+import {ProductInfo} from "./bicycle"
 
 import "rxjs"
 @Injectable()

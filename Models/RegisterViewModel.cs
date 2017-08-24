@@ -23,8 +23,8 @@ namespace ecommerce.Models
         public string Password { get; set; }
 
         
-        [Compare("Password", ErrorMessage = "Password and confirmation must match.")]
-        public string ConfirmPassword { get; set; }
+        // [Compare("Password", ErrorMessage = "Password and confirmation must match.")]
+        // public string ConfirmPassword { get; set; }
         
     }
 }

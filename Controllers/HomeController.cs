@@ -48,33 +48,34 @@ namespace ecommerce.Controllers
                         return Json(AllProductInfos);
         }
 
-//                 [HttpPost]
-//         [Route("addproduct")]
-//         public IActionResult addproduct(ProductInfo newprod)
-//         {
-//              if(ModelState.IsValid)
-//         {   _context.Add(newprod);
-//                 _context.SaveChanges(); 
-//                 return RedirectToAction("index"); 
+        [HttpPost]
+        [Route("addbike")]
+        public IActionResult addbike([FromBody] ProductInfo newprod)
+        {
+            System.Console.WriteLine(newprod.ProductName);
+             if(ModelState.IsValid)
+        {   _context.Add(newprod);
+                _context.SaveChanges(); 
+                return Json(true); 
 
-//         }
-//         else
-//         {
-//                ViewBag.errors = ModelState.Values;
-//         ViewBag.status="prodaddfail";
-//         return View("index");
-//         }
+        }
+        else
+        {
+               ViewBag.errors = ModelState.Values;
+        ViewBag.status="prodaddfail";
+        return Json(false);
+        }
           
-//         }
+        }
 
-//          [HttpGet]
-//         [Route("customers")]
-//         public IActionResult customers()
-//         {
-//              List<Customerinfo> Customerinfos = _context.Customers.ToList();
-//              @ViewBag.Customerinfos=Customerinfos;
-//             return View("Customershow");
-//         }
+        //  [HttpGet]
+        // [Route("customers")]
+        // public IActionResult customers()
+        // {
+        //      List<Customerinfo> Customerinfos = _context.Customers.ToList();
+        //      @ViewBag.Customerinfos=Customerinfos;
+        //     return View("Customershow");
+        // }
 
 //          [HttpPost]
 //         [Route("addcust")]

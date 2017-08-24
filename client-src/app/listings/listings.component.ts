@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router" 
  import {UserService} from "./../user.service"
-import {Bicycle} from "./../bicycle"
-import { User } from '.././user/user';
+import {ProductInfo} from "./../bicycle"
+import { Userrecord } from '.././user/user';
 
 @Component({
   selector: 'app-listings',
@@ -10,9 +10,9 @@ import { User } from '.././user/user';
   styleUrls: ['./listings.component.css']
 })
 export class ListingsComponent implements OnInit {
-  newBike: Bicycle = new Bicycle();
+  newBike: ProductInfo = new ProductInfo();
    
-  allBikes: Array<Bicycle>;
+  allBikes: Array<ProductInfo>;
   constructor(private user_service : UserService, private router:Router) { }
 
   ngOnInit() {
