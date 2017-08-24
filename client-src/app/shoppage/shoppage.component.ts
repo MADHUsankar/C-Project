@@ -42,9 +42,9 @@ private cartSubscription: Subscription;
     .catch((err) => { console.log(err); });
   }
 
-  chooseProduct(productName){
-    console.log("bicyle.ProductName",productName);
-    this.router.navigate(['/product', productName]);
+  chooseProduct(bicyle: ProductInfo){
+    console.log("bicyle.ProductName",bicyle.ProductName);
+    this.router.navigate(['/product', bicyle.ProductName]);
   }
 
 }

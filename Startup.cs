@@ -31,7 +31,12 @@ namespace ecommerce
             // Add framework services.
             services.AddDbContext<ecommercecontext>(options => options.UseMySQL(Configuration["DBInfo:ConnectionString"]));
             // services.Configure<MySqlOptions>(Configuration.GetSection("DBInfo"));
-            services.AddMvc();
+            // services.AddMvc()
+             services.AddMvc()
+               .AddJsonOptions(options =>
+               {
+                   options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+               });
             services.AddSession();
         }
 
@@ -44,6 +49,7 @@ namespace ecommerce
             app.UseStaticFiles();
             app.UseSession();
             app.UseMvc();
+            
             app.Use(async(context,next) => 
             {
                await next();

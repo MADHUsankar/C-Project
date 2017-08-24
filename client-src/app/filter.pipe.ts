@@ -18,7 +18,7 @@ export class FilterPipe implements PipeTransform {
 
       searchStr=searchStr.toLowerCase();
     return bike_array.filter(bike => {
-      return bike.ProductName.toLowerCase().includes(searchStr) 
+      return bike.ProductName.toLowerCase().includes(searchStr) || bike.ProductName.toLowerCase().includes(searchStr)
     })
   }
 
