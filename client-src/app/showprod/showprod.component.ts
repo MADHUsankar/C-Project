@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from "@angular/router"
  import {UserService} from "./../user.service"
  import {ShoppingCartService} from "./../shoppingcart.service"
-import {Bicycle} from "./../bicycle"
-import { User } from '.././user/user';
+import {ProductInfo} from "./../bicycle"
+import { Userrecord } from '.././user/user';
 import { Observable } from "rxjs/Observable";
 import { Observer } from "rxjs/Observer";
 import { ShoppingCart } from "./../shoppingCart.model";
@@ -15,10 +15,10 @@ import { Subscription } from "rxjs/Subscription";
   styleUrls: ['./showprod.component.css']
 })
 export class ShowprodComponent implements OnInit {
-  newBike: Bicycle = new Bicycle();
+  newBike: ProductInfo = new ProductInfo();
   product_title =" "
-   product = new Bicycle
-  allBikes: Array<Bicycle>;
+   product = new ProductInfo
+  allBikes: Array<ProductInfo>;
   cartonly
   public cart: Observable<ShoppingCart>;
 private cartSubscription: Subscription;
@@ -52,22 +52,22 @@ private cartSubscription: Subscription;
       })
   }
 
-       public addProductToCart(product: Bicycle): void {
+       public addProductToCart(product: ProductInfo): void {
          console.log("add cart prodtc",product)
     this.shoppingCartService.addItem(product, 1);
   }
 
-  public removeProductFromCart(product: Bicycle): void {
+  public removeProductFromCart(product: ProductInfo): void {
     this.shoppingCartService.addItem(product, -1);
   }
 
-  public productInCart(product: Bicycle): boolean {
+  public productInCart(product: ProductInfo): boolean {
     return Observable.create((obs: Observer<boolean>) => {
      
       const sub = this.shoppingCartService
                       .get()
                       .subscribe((cart) => {
-                        obs.next(cart.items.some((i) => i.title === product.title));
+                        obs.next(cart.items.some((i) => i.title === product.ProductName));
                         obs.complete();
                       });
       // sub.unsubscribe();

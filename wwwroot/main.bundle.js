@@ -242,7 +242,7 @@ AppModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ProductInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductInfo; });
 var ProductInfo = (function () {
     function ProductInfo() {
         this.ProductName = '';
@@ -706,7 +706,7 @@ var ListingsComponent = (function () {
     function ListingsComponent(user_service, router) {
         this.user_service = user_service;
         this.router = router;
-        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["b" /* ProductInfo */]();
+        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["a" /* ProductInfo */]();
     }
     ListingsComponent.prototype.ngOnInit = function () {
         this.getAllBikes();
@@ -785,7 +785,7 @@ var MylistingComponent = (function () {
         this.user_service = user_service;
         this.router = router;
         // login_user = new User
-        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["b" /* ProductInfo */]();
+        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["a" /* ProductInfo */]();
         this.hasImage = false;
     }
     MylistingComponent.prototype.ngOnInit = function () {
@@ -1008,7 +1008,7 @@ var productService = (function (_super) {
             .get("/getAllBikes")
             .map(function (response) { return response.json()
             .map(function (item) {
-            var model = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["b" /* ProductInfo */]();
+            var model = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["a" /* ProductInfo */]();
             model.updateFrom(item);
             return model;
         }); }); });
@@ -1079,7 +1079,7 @@ var ShoppageComponent = (function () {
         this.user_service = user_service;
         this.router = router;
         this.shoppingCartService = shoppingCartService;
-        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["b" /* ProductInfo */]();
+        this.newBike = new __WEBPACK_IMPORTED_MODULE_3__bicycle__["a" /* ProductInfo */]();
         this.searchStr = '';
     }
     //  private cartSubscription: Subscription;
@@ -1334,9 +1334,9 @@ var ShowprodComponent = (function () {
         this.user_service = user_service;
         this.router = router;
         this.shoppingCartService = shoppingCartService;
-        this.newBike = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["Bicycle"]();
+        this.newBike = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["a" /* ProductInfo */]();
         this.product_title = " ";
-        this.product = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["Bicycle"];
+        this.product = new __WEBPACK_IMPORTED_MODULE_4__bicycle__["a" /* ProductInfo */];
         this._route.params.subscribe(function (param) {
             _this.product_title = param.title;
         });
@@ -1374,7 +1374,7 @@ var ShowprodComponent = (function () {
             var sub = _this.shoppingCartService
                 .get()
                 .subscribe(function (cart) {
-                obs.next(cart.items.some(function (i) { return i.title === product.title; }));
+                obs.next(cart.items.some(function (i) { return i.title === product.ProductName; }));
                 obs.complete();
             });
             // sub.unsubscribe();
