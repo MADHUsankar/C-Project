@@ -19,7 +19,8 @@
     <div class="container">
         <div class="row row1">
             <ul class="largenav pull-right">
-                <li class="upper-links"><a class="links" href="/shoppage">Continue Shopping</a></li>
+              <!-- <a [routerLink]="['/shoppage']">Shopping</a>  -->
+                <li class="upper-links"><a class="links" [routerLink]="['/shoppage']">Continue Shopping</a></li>
                 <li class="upper-links"><a class="links" href="/logout">Logout</a></li>
                            
             </ul>
@@ -80,7 +81,7 @@
         <div class="form-group">
           <label>Price</label> <span class="error" *ngIf="Price.errors && (Price.dirty || Price.touched)">
             <span *ngIf="Price.errors.required"> *required</span><span *ngIf="!Price.errors.required && Price.errors.minValue">*at least $1</span></span>
-          <input type="number" class="form-control" name="Price" [(ngModel)]="newBike.price" #Price="ngModel" required minValue="1">
+          <input type="number" class="form-control" name="Price" [(ngModel)]="newBike.Price" #Price="ngModel" required minValue="1">
          
           <br><input type="submit" value="Create" class="btn btn-success" [disabled]="!bikeForm.form.valid ">
         </div>
@@ -94,23 +95,25 @@
 <hr>
   </div>
 </div>
-<hr>
-<hr>
+
+
 <br>
 <br>
 <br>
 <br>
-<div class="edits">
+ 
 <!-- {{mybikes}} -->
   <div class="bikes" *ngFor="let b of myBikes; let idx = index"><br>
     <div class="col-sm-7">
-    <img md-card-image src={{b.Imageurl}} style="width:100px;height:100px">
-    {{b.ProductName}}
-    {{b.Description}}
-    {{b.Price}}
+    <img md-card-image src={{b.imageurl}} style="width:100px;height:100px">
+    {{b.productName}}
+    <br>
+    {{b.description}}
+    <br>{{b.price}}
+    <hr>
     </div>
   </div>
-</div>
+ 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

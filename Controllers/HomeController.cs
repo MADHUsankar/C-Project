@@ -40,7 +40,7 @@ namespace ecommerce.Controllers
         [Route("getAllBikes")]
         public IActionResult getAllBikes()
         {
-             List<ProductInfo> AllProductInfos = _context.Products.ToList();
+             List<ProductInfo> AllProductInfos = _context.products.ToList();
             //  @ViewBag.AllProductInfos=AllProductInfos;
             // return View("products");//
             System.Console.WriteLine("AllProductInfos");
@@ -48,23 +48,37 @@ namespace ecommerce.Controllers
                         return Json(AllProductInfos);
         }
 
+        [HttpGet]
+        [Route("/products/{product_title}")]
+        public IActionResult getoneBike(string product_title)
+        {
+            ProductInfo ProductInfoone = _context.products.SingleOrDefault(w => w.ProductName == product_title);
+            
+            //  @ViewBag.AllProductInfos=AllProductInfos;
+            // return View("products");//
+            System.Console.WriteLine("ProductInfoone");
+            System.Console.WriteLine(ProductInfoone);
+                        return Json(ProductInfoone);
+        }
+
         [HttpPost]
         [Route("addbike")]
         public IActionResult addbike([FromBody] ProductInfo newprod)
         {
-            System.Console.WriteLine(newprod.ProductName);
+            System.Console.WriteLine(newprod); 
+            // newprod.UserId=19;
              if(ModelState.IsValid)
-        {   _context.Add(newprod);
-                _context.SaveChanges(); 
-                return Json(true); 
+                    {   _context.Add(newprod);
+                            _context.SaveChanges(); 
+                            return Json(true); 
 
-        }
+                    }
         else
-        {
-               ViewBag.errors = ModelState.Values;
-        ViewBag.status="prodaddfail";
-        return Json(false);
-        }
+                    {
+                        ViewBag.errors = ModelState.Values;
+                    ViewBag.status="prodaddfail";
+                    return Json(false);
+                    }
           
         }
 

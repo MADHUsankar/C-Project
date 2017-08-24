@@ -9,6 +9,7 @@ namespace ecommerce.Models
     {
         [Key]
         public int ProductId {get; set;}
+        public int UserId {get; set;}
         [Required]
         public string ProductName {get; set;}
         [Required]
@@ -17,7 +18,7 @@ namespace ecommerce.Models
         public string Imageurl {get; set;}
         [Required]
         
-        public double Price {get;set;}
+        public int Price {get;set;}
     //    public DateTime CreatedAt {get;set;}
     //    public DateTime UpdatedAt {get;set;}
         //   public List<Orderinfo> Orderinfo {get;set;}

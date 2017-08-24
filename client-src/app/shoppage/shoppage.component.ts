@@ -18,6 +18,7 @@ import { Observer } from "rxjs/Observer";
 export class ShoppageComponent implements OnInit  {
   newBike: ProductInfo = new ProductInfo();
   searchStr = ''
+  productName = ''
   allBikes: Array<ProductInfo>;
    public cart: Observable<ShoppingCart>;
 private cartSubscription: Subscription;
@@ -41,8 +42,9 @@ private cartSubscription: Subscription;
     .catch((err) => { console.log(err); });
   }
 
-  chooseProduct(bicyle: ProductInfo){
-    this.router.navigate(['/product', bicyle.ProductName]);
+  chooseProduct(productName){
+    console.log("bicyle.ProductName",productName);
+    this.router.navigate(['/product', productName]);
   }
 
 }

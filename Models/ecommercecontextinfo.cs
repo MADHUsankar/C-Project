@@ -10,7 +10,7 @@ namespace ecommerce.Models
 
             public DbSet<Customerinfo> Customers { get; set; }
             public DbSet<Orderinfo> Orders { get; set; }
-            public DbSet<ProductInfo> Products { get; set; }
+            public DbSet<ProductInfo> products { get; set; }
 
 
     }

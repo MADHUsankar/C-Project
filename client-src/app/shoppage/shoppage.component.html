@@ -60,12 +60,14 @@
 
 <div class="row bikes"   >
   
-      <div class="col-md-3 product"  *ngFor="let b of allBikes">
+      <div class="col-md-3 product"  *ngFor="let b of allBikes ">
+         <img md-card-image src={{b.imageurl}}  style="width:100px;height:100px"><br>
+          
           <!-- <h4  >{{b.title}}</h4>   -->
-          <!-- {{b| json }} -->
-              <b>ProductName:</b> {{b.productName }}<br>
-              
-              <a id="hyper" (click)="chooseProduct(b)">    
+              <b>Price:</b> {{b.price | currency:'USD':true  }}<br>
+              <b> Description :</b> {{b.description}}
+                
+              <a id="hyper" (click)="chooseProduct(b.productName)">    
                        <h4>{{b.productName}} </h4>
         </a> 
                        <br>

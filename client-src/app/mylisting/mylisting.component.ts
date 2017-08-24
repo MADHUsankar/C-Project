@@ -27,11 +27,17 @@ export class MylistingComponent implements OnInit {
   }
   getAllBikes() {
     this.user_service.getAllBikes()
-    .then((bikes) => { this.myBikes = bikes; })
+    .then((bikes) => {
+        console.log("myBikes");
+        this.myBikes = bikes; 
+            console.log(this.myBikes);
+      })
     .catch((err) => { console.log(err); });
   }
 
   addBike() {
+    console.log(this.newBike);
+    this.newBike.UserId=19;
     this.user_service.addBike(this.newBike)
     .then(() => { this.getAllBikes(); })
     .catch((err) => { console.log(err); });

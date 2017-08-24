@@ -60,6 +60,8 @@ export class ShoppingCartService {
  
    public addItem(product: ProductInfo, quantity: number): void {
     const cart = this.retrieve();
+    console.log("product.ProductName",product.ProductName)
+    console.log("product.productName",product.productName)
     let item = cart.items.find((p) => p.title === product.ProductName);
     if (item === undefined) {
       item = new CartItem();

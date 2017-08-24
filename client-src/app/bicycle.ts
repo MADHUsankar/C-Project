@@ -7,7 +7,7 @@ export class ProductInfo {
     public Imageurl: string = null;
     // public CreatedAt: Date;
     // public UpdatedAt: Date;
-    public user_id: string = '';
+    public UserId: number = null;
      
   public updateFrom(src: ProductInfo): void {
     this.ProductName = src.ProductName;
